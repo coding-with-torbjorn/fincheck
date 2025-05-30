@@ -1,6 +1,7 @@
 package com.financials.fincheck.validator;
 
 import com.financials.fincheck.model.Payslip;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
  * <p>
  * This class is intended to encapsulate all validation logic for payslips.
  */
+@Component
 public class PayslipValidator {
 
     /**
