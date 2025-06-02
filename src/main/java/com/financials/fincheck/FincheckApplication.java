@@ -3,8 +3,8 @@ package com.financials.fincheck;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-// TODO: Complete PayslipValidator class
-// TODO: Create unit tests in PayslipValidatorTest class
+// TODO: Decide upon test cases/suites, etc for FinCheck
+// TODO: Create pipeline
 // TODO: Once completed Invoice and Payslip validators/unit and integration tests, follow/research TDD
 /**
  * Entry point of the FinCheck application.
