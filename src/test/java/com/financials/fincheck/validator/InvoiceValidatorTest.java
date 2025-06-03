@@ -1,6 +1,7 @@
 package com.financials.fincheck.validator;
 
 import com.financials.fincheck.model.Invoice;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -18,14 +19,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class InvoiceValidatorTest {
     private final InvoiceValidator validator = new InvoiceValidator();
+    private Invoice validInvoice;
 
+    @BeforeEach
+    public void setUp() throws Exception {
+        validInvoice = new Invoice("INV001", 2500.0, "EUR");
+    }
     /**
      * Tests that a properly formed invoice passes all validation checks.
      */
     @Test
     public void validInvoiceShouldReturnNoErrors() throws Exception {
-        Invoice invoice = new Invoice("INV001", 2500.0, "EUR");
-        List<String> errors = validator.validate(invoice);
+        List<String> errors = validator.validate(validInvoice);
         assertTrue(errors.isEmpty());
     }
 
@@ -34,8 +39,8 @@ public class InvoiceValidatorTest {
      */
     @Test
     public void negativeAmountShouldReturnAmountValidationError() throws Exception {
-        Invoice invoice = new Invoice("INV002", -75.0, "EUR");
-        List<String> errors = validator.validate(invoice);
+        validInvoice.setAmount(-75.0);
+        List<String> errors = validator.validate(validInvoice);
         assertEquals(1, errors.size());
         assertEquals("Amount must not be negative", errors.getFirst());
     }
@@ -45,8 +50,8 @@ public class InvoiceValidatorTest {
      */
     @Test
     public void invalidCurrencyShouldReturnCurrencyValidationError() throws Exception {
-        Invoice invoice = new Invoice("INV003", 164.0, "UFC");
-        List<String> errors = validator.validate(invoice);
+        validInvoice.setCurrency("UFC");
+        List<String> errors = validator.validate(validInvoice);
         assertEquals(1, errors.size());
         assertEquals("Invalid currency: UFC", errors.getFirst());
     }
@@ -56,8 +61,8 @@ public class InvoiceValidatorTest {
      */
     @Test
     public void emptyInvoiceNumberShouldReturnInvoiceNumberValidationError() throws Exception {
-        Invoice invoice = new Invoice("", 254, "USD");
-        List<String> errors = validator.validate(invoice);
+        validInvoice.setInvoiceNumber("");
+        List<String> errors = validator.validate(validInvoice);
         assertEquals(1, errors.size());
         assertEquals("Invoice number must not be empty", errors.getFirst());
     }
@@ -68,8 +73,8 @@ public class InvoiceValidatorTest {
      */
     @Test
     public void multipleInvalidFieldsShouldReturnMultipleValidationErrors() throws Exception {
-        Invoice invoice = new Invoice("", -10.0, "ABC");
-        List<String> errors = validator.validate(invoice);
+        Invoice invalidInvoice = new Invoice("", -10.0, "ABC");
+        List<String> errors = validator.validate(invalidInvoice);
         assertTrue(errors.contains("Amount must not be negative"));
         assertTrue(errors.contains("Invalid currency: ABC"));
         assertTrue(errors.contains("Invoice number must not be empty"));

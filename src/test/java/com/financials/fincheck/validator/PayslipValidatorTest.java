@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * This test suite will verify the correctness of validation rules applied
  * to {@code Payslip} objects.
  */
+// TODO: Add @BeforeEach with base Payslip
 class PayslipValidatorTest {
     private final PayslipValidator validator = new PayslipValidator();
 
