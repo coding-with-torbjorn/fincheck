@@ -19,18 +19,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class InvoiceValidatorTest {
     private final InvoiceValidator validator = new InvoiceValidator();
-    private Invoice validInvoice;
+    private Invoice baseInvoice;
 
     @BeforeEach
     public void setUp() throws Exception {
-        validInvoice = new Invoice("INV001", 2500.0, "EUR");
+        baseInvoice = new Invoice("INV001", 2500.0, "EUR");
     }
     /**
      * Tests that a properly formed invoice passes all validation checks.
      */
     @Test
     public void validInvoiceShouldReturnNoErrors() throws Exception {
-        List<String> errors = validator.validate(validInvoice);
+        List<String> errors = validator.validate(baseInvoice);
         assertTrue(errors.isEmpty());
     }
 
@@ -39,8 +39,8 @@ public class InvoiceValidatorTest {
      */
     @Test
     public void negativeAmountShouldReturnAmountValidationError() throws Exception {
-        validInvoice.setAmount(-75.0);
-        List<String> errors = validator.validate(validInvoice);
+        baseInvoice.setAmount(-75.0);
+        List<String> errors = validator.validate(baseInvoice);
         assertEquals(1, errors.size());
         assertEquals("Amount must not be negative", errors.getFirst());
     }
@@ -50,8 +50,8 @@ public class InvoiceValidatorTest {
      */
     @Test
     public void invalidCurrencyShouldReturnCurrencyValidationError() throws Exception {
-        validInvoice.setCurrency("UFC");
-        List<String> errors = validator.validate(validInvoice);
+        baseInvoice.setCurrency("UFC");
+        List<String> errors = validator.validate(baseInvoice);
         assertEquals(1, errors.size());
         assertEquals("Invalid currency: UFC", errors.getFirst());
     }
@@ -61,8 +61,8 @@ public class InvoiceValidatorTest {
      */
     @Test
     public void emptyInvoiceNumberShouldReturnInvoiceNumberValidationError() throws Exception {
-        validInvoice.setInvoiceNumber("");
-        List<String> errors = validator.validate(validInvoice);
+        baseInvoice.setInvoiceNumber("");
+        List<String> errors = validator.validate(baseInvoice);
         assertEquals(1, errors.size());
         assertEquals("Invoice number must not be empty", errors.getFirst());
     }
