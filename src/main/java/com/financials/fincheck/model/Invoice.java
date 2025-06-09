@@ -17,7 +17,7 @@ public class Invoice {
      * Total amount stated on the invoice.
      * Must be non-negative and expressed in the given currency.
      */
-    private double amount;
+    private Double amount;
 
     /**
      * ISO 4217 currency code (e.g., "EUR", "USD", "GBP") used in the invoice.
@@ -31,7 +31,7 @@ public class Invoice {
      * @param amount        The monetary value of the invoice.
      * @param currency      The currency code associated with the amount.
      */
-    public Invoice(String invoiceNumber, double amount, String currency) {
+    public Invoice(String invoiceNumber, Double amount, String currency) {
         this.invoiceNumber = invoiceNumber;
         this.amount = amount;
         this.currency = currency;
@@ -45,11 +45,11 @@ public class Invoice {
         this.invoiceNumber = invoiceNumber;
     }
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
