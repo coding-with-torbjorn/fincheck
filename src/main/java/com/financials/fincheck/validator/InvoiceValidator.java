@@ -31,7 +31,9 @@ public class InvoiceValidator {
     public List<String> validate(Invoice invoice) {
         List<String> errors = new ArrayList<>();
 
-        if (invoice.getAmount() < 0) {
+        if (invoice.getAmount() == null) {
+            errors.add("Amount must be provided");
+        } else if (invoice.getAmount() < 0) {
             errors.add("Amount must not be negative");
         }
 

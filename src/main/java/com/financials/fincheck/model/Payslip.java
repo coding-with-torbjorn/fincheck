@@ -3,6 +3,7 @@ package com.financials.fincheck.model;
 import java.time.LocalDate;
 import java.util.Map;
 
+// TODO: Replace all primitive doubles to Double wrapper class (So that integration test suite can ensure that grossSalary and netSalary are not empty)
 /**
  * Represents an employee's payslip, containing payment and employment details for a specific pay period.
  * <p>
