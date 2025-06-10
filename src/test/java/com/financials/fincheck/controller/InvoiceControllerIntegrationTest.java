@@ -56,8 +56,8 @@ public class InvoiceControllerIntegrationTest {
     }
 
     @Test
-    @DisplayName("Missing fields should trigger validation errors")
-    public void missingFieldsShouldReturnErrors() throws Exception {
+    @DisplayName("Missing invoice fields should trigger validation errors")
+    public void missingInvoiceFieldsShouldReturnErrors() throws Exception {
         String emptyJson = "{}";
 
         mockMvc.perform(post("/invoices/validate")

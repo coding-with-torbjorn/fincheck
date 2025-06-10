@@ -3,7 +3,6 @@ package com.financials.fincheck;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-// TODO: Complete PayslipControllerIntegrationTest integration test suite
 // TODO: Focus on improving current tests/adding new ones (integration, etc). Decide upon test cases/suites, etc for FinCheck
 // TODO: Create pipeline
 // TODO: Once completed Invoice and Payslip validators/unit and integration tests, follow/research TDD
