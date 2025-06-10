@@ -49,14 +49,28 @@ class PayslipValidatorTest {
     public void nonPositiveGrossSalaryShouldReturnError() throws Exception {
         basePayslip.setGrossSalary(0.0);
         List<String> errors = validator.validate(basePayslip);
-        assertTrue(errors.contains("Salary must be positive"));
+        assertTrue(errors.contains("Gross salary must be positive"));
     }
 
     @Test
     public void nonPositiveNetSalaryShouldReturnError() throws Exception {
-        basePayslip.setNetSalary(0);
+        basePayslip.setNetSalary(0.0);
         List<String> errors = validator.validate(basePayslip);
-        assertTrue(errors.contains("Salary must be positive"));
+        assertTrue(errors.contains("Net salary must be positive"));
+    }
+
+    @Test
+    public void emptyGrossSalaryShouldReturnError() throws Exception {
+        basePayslip.setGrossSalary(null);
+        List<String> errors = validator.validate(basePayslip);
+        assertTrue(errors.contains("Gross salary must not be empty"));
+    }
+
+    @Test
+    public void emptyNetSalaryShouldReturnError() throws Exception {
+        basePayslip.setNetSalary(null);
+        List<String> errors = validator.validate(basePayslip);
+        assertTrue(errors.contains("Net salary must not be empty"));
     }
 
     @Test
@@ -180,7 +194,8 @@ class PayslipValidatorTest {
                 -10
         );
         List<String> errors = validator.validate(invalidPayslip);
-        assertTrue(errors.contains("Salary must be positive"));
+        assertTrue(errors.contains("Gross salary must be positive"));
+        assertTrue(errors.contains("Net salary must be positive"));
         assertTrue(errors.contains("Employee ID must not be empty"));
         assertTrue(errors.contains("Employee name must not be empty"));
         assertTrue(errors.contains("Pay period must follow the format YYYY-MM"));

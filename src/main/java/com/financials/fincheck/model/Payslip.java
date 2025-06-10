@@ -3,7 +3,6 @@ package com.financials.fincheck.model;
 import java.time.LocalDate;
 import java.util.Map;
 
-// TODO: Replace all primitive doubles to Double wrapper class (So that integration test suite can ensure that grossSalary and netSalary are not empty)
 /**
  * Represents an employee's payslip, containing payment and employment details for a specific pay period.
  * <p>
@@ -35,7 +34,7 @@ public class Payslip {
     /**
      * Gross salary before deductions.
      */
-    private double grossSalary;
+    private Double grossSalary;
 
     /**
      * A map of deduction names (e.g., "Tax", "Pension") to deduction amounts (e.g., "incomeTax": 750.00).
@@ -45,7 +44,7 @@ public class Payslip {
     /**
      * Net salary after all deductions.
      */
-    private double netSalary;
+    private Double netSalary;
 
     /**
      * Method used to pay the employee (e.g., bank transfer, cheque).
@@ -83,7 +82,7 @@ public class Payslip {
      * @param employer       Information about the employer issuing the payslip.
      * @param hoursWorked    Total number of hours worked during the pay period.
      */
-    public Payslip(String employeeId, String employeeName, String payPeriod, LocalDate paymentDate, double grossSalary, Map<String, Double> deductions, double netSalary, PaymentMethod paymentMethod, String bankAccount, Employer employer, int hoursWorked) {
+    public Payslip(String employeeId, String employeeName, String payPeriod, LocalDate paymentDate, Double grossSalary, Map<String, Double> deductions, Double netSalary, PaymentMethod paymentMethod, String bankAccount, Employer employer, int hoursWorked) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
         this.payPeriod = payPeriod;
@@ -129,19 +128,19 @@ public class Payslip {
         this.paymentDate = paymentDate;
     }
 
-    public double getGrossSalary() {
+    public Double getGrossSalary() {
         return grossSalary;
     }
 
-    public void setGrossSalary(double grossSalary) {
+    public void setGrossSalary(Double grossSalary) {
         this.grossSalary = grossSalary;
     }
 
-    public double getNetSalary() {
+    public Double getNetSalary() {
         return netSalary;
     }
 
-    public void setNetSalary(double netSalary) {
+    public void setNetSalary(Double netSalary) {
         this.netSalary = netSalary;
     }
 

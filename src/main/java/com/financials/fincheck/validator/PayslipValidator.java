@@ -30,8 +30,16 @@ public class PayslipValidator {
     public List<String> validate(Payslip payslip) {
         List<String> errors = new ArrayList<>();
 
-        if (payslip.getGrossSalary() <= 0 || payslip.getNetSalary() <= 0) {
-            errors.add("Salary must be positive");
+        if (payslip.getGrossSalary() == null) {
+            errors.add("Gross salary must not be empty");
+        } else if (payslip.getGrossSalary() <= 0) {
+            errors.add("Gross salary must be positive");
+        }
+
+        if (payslip.getNetSalary() == null) {
+            errors.add("Net salary must not be empty");
+        } else if (payslip.getNetSalary() <= 0) {
+            errors.add("Net salary must be positive");
         }
 
         if (payslip.getEmployeeId() == null || payslip.getEmployeeId().trim().isEmpty()) {
@@ -79,7 +87,7 @@ public class PayslipValidator {
                 }
             }
 
-            if (!hasInvalidDeduction) {
+            if (!hasInvalidDeduction && payslip.getGrossSalary() != null && payslip.getNetSalary() != null) {
                 double sumDeductions = payslip.getDeductions().values().stream().mapToDouble(Double::doubleValue).sum();
                 double expectedNetSalary = payslip.getGrossSalary() - sumDeductions;
 
