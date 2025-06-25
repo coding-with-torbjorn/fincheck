@@ -3,7 +3,7 @@ package com.financials.fincheck;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-// TODO: Add support for expense reports (class, follow TDD)
+// TODO: Create integration test suite for ExpenseReportController
 // TODO: Once completed Invoice and Payslip validators/unit and integration tests, follow/research TDD
 // TODO: Focus on improving current tests/adding new ones (integration, etc). Decide upon test cases/suites, etc for FinCheck
 /**

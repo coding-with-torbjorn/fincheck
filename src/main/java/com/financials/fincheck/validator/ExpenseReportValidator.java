@@ -1,11 +1,13 @@
 package com.financials.fincheck.validator;
 
 import com.financials.fincheck.model.ExpenseReport;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component // TODO: What does component mean again?
 public class ExpenseReportValidator {
     public List<String> validate(ExpenseReport expenseReport) {
         List<String> errors = new ArrayList<>();
