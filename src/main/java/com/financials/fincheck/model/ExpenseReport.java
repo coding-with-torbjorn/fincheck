@@ -1,5 +1,7 @@
 package com.financials.fincheck.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import java.time.LocalDate;
 import java.util.Currency;
 import java.util.List;
@@ -8,6 +10,8 @@ public class ExpenseReport {
     private String reportId;
     private String employeeId;
     private String businessPurpose;
+
+    @JsonDeserialize(using = com.financials.fincheck.dto.CurrencyDeserializer.class)
     private Currency currency;
     private LocalDate submissionDate;
     private List<ExpenseItem> items;

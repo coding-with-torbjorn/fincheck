@@ -4,7 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 // TODO: Create integration test suite for ExpenseReportController
-// TODO: Once completed Invoice and Payslip validators/unit and integration tests, follow/research TDD
 // TODO: Focus on improving current tests/adding new ones (integration, etc). Decide upon test cases/suites, etc for FinCheck
 /**
  * Entry point of the FinCheck application.

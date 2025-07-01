@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component // TODO: What does component mean again?
+@Component
 public class ExpenseReportValidator {
     public List<String> validate(ExpenseReport expenseReport) {
         List<String> errors = new ArrayList<>();

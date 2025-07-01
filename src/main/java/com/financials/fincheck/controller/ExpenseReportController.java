@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-// TODO: Läs igenom koden och se till att förstå allt
 @RestController
 @RequestMapping("/reports")
 public class ExpenseReportController {
